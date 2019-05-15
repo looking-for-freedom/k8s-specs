@@ -29,7 +29,7 @@
         },
         "annotations": {
           "atomist.com/k8vent": "{\"webhooks\":[\"https://webhook.atomist.com/atomist/kube/teams/AR12QA2B3\"]}",
-          "atomist.com/ts": "20190514221407"
+          "atomist.com/ts": "20190515153713"
         }
       },
       "spec": {
@@ -81,7 +81,7 @@
             "env": [
               {
                 "name": "ATOMIST_CONFIG_PATH",
-                "value": "/opt/atm/atomist-config.json"
+                "value": "/opt/atm/client.config.json"
               },
               {
                 "name": "ATOMIST_GOAL_LAUNCHER",
