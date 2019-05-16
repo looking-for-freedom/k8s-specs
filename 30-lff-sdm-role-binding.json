@@ -3,6 +3,7 @@
   "kind": "RoleBinding",
   "metadata": {
     "name": "lff-sdm",
+    "namespace": "sdm",
     "labels": {
       "app.kubernetes.io/name": "lff-sdm",
       "atomist.com/workspaceId": "AR12QA2B3",
