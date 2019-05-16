@@ -2,14 +2,14 @@
   "apiVersion": "apps/v1",
   "kind": "Deployment",
   "metadata": {
-    "name": "lff-sdm",
-    "namespace": "sdm",
     "labels": {
+      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube",
       "app.kubernetes.io/name": "lff-sdm",
-      "atomist.com/workspaceId": "AR12QA2B3",
       "app.kubernetes.io/part-of": "lff-sdm",
-      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube"
-    }
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "name": "lff-sdm",
+    "namespace": "sdm"
   },
   "spec": {
     "replicas": 1,
@@ -19,66 +19,30 @@
         "atomist.com/workspaceId": "AR12QA2B3"
       }
     },
+    "strategy": {
+      "rollingUpdate": {
+        "maxSurge": 1,
+        "maxUnavailable": 0
+      },
+      "type": "RollingUpdate"
+    },
     "template": {
       "metadata": {
-        "name": "lff-sdm",
-        "labels": {
-          "app.kubernetes.io/name": "lff-sdm",
-          "atomist.com/workspaceId": "AR12QA2B3",
-          "app.kubernetes.io/part-of": "lff-sdm",
-          "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube"
-        },
         "annotations": {
           "atomist.com/k8vent": "{\"webhooks\":[\"https://webhook.atomist.com/atomist/kube/teams/AR12QA2B3\"]}",
-          "atomist.com/ts": "20190515153713"
-        }
+          "atomist.com/ts": "20190516132026"
+        },
+        "labels": {
+          "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube",
+          "app.kubernetes.io/name": "lff-sdm",
+          "app.kubernetes.io/part-of": "lff-sdm",
+          "atomist.com/workspaceId": "AR12QA2B3"
+        },
+        "name": "lff-sdm"
       },
       "spec": {
         "containers": [
           {
-            "name": "lff-sdm",
-            "image": "atmhoff/lff-sdm:1.0.0",
-            "resources": {
-              "limits": {
-                "cpu": "1000m",
-                "memory": "512Mi"
-              },
-              "requests": {
-                "cpu": "100m",
-                "memory": "384Mi"
-              }
-            },
-            "ports": [
-              {
-                "name": "http",
-                "containerPort": 2866,
-                "protocol": "TCP"
-              }
-            ],
-            "readinessProbe": {
-              "httpGet": {
-                "path": "/health",
-                "port": "http",
-                "scheme": "HTTP"
-              },
-              "initialDelaySeconds": 20,
-              "timeoutSeconds": 3,
-              "periodSeconds": 20,
-              "successThreshold": 1,
-              "failureThreshold": 3
-            },
-            "livenessProbe": {
-              "httpGet": {
-                "path": "/health",
-                "port": "http",
-                "scheme": "HTTP"
-              },
-              "initialDelaySeconds": 20,
-              "timeoutSeconds": 3,
-              "periodSeconds": 20,
-              "successThreshold": 1,
-              "failureThreshold": 3
-            },
             "env": [
               {
                 "name": "ATOMIST_CONFIG_PATH",
@@ -101,14 +65,57 @@
                 "value": "1"
               }
             ],
+            "image": "atmhoff/lff-sdm:1.0.0",
+            "livenessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 20,
+              "periodSeconds": 20,
+              "successThreshold": 1,
+              "timeoutSeconds": 3
+            },
+            "name": "lff-sdm",
+            "ports": [
+              {
+                "containerPort": 2866,
+                "name": "http",
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "failureThreshold": 3,
+              "httpGet": {
+                "path": "/health",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 20,
+              "periodSeconds": 20,
+              "successThreshold": 1,
+              "timeoutSeconds": 3
+            },
+            "resources": {
+              "limits": {
+                "cpu": "1000m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "384Mi"
+              }
+            },
             "volumeMounts": [
               {
                 "mountPath": "/var/run/docker.sock",
                 "name": "docker-sock"
               },
               {
-                "name": "lff-sdm",
                 "mountPath": "/opt/atm",
+                "name": "lff-sdm",
                 "readOnly": true
               }
             ]
@@ -129,13 +136,6 @@
             }
           }
         ]
-      }
-    },
-    "strategy": {
-      "type": "RollingUpdate",
-      "rollingUpdate": {
-        "maxUnavailable": 0,
-        "maxSurge": 1
       }
     }
   }

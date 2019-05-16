@@ -3,9 +3,9 @@
   "kind": "Role",
   "metadata": {
     "labels": {
+      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube",
       "app.kubernetes.io/name": "lff-sdm",
       "app.kubernetes.io/part-of": "lff-sdm",
-      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube",
       "atomist.com/workspaceId": "AR12QA2B3"
     },
     "name": "lff-sdm",
@@ -13,14 +13,38 @@
   },
   "rules": [
     {
-      "apiGroups": [""],
-      "resources": ["pods"],
-      "verbs": ["get", "list", "watch", "create", "update", "patch", "delete"]
+      "apiGroups": [
+        ""
+      ],
+      "resources": [
+        "pods"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
     },
     {
-      "apiGroups": ["batch"],
-      "resources": ["jobs"],
-      "verbs": ["get", "list", "watch", "create", "update", "patch", "delete"]
+      "apiGroups": [
+        "batch"
+      ],
+      "resources": [
+        "jobs"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
     }
   ]
 }

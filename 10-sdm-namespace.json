@@ -3,8 +3,8 @@
   "kind": "Namespace",
   "metadata": {
     "labels": {
-      "atomist.com/workspaceId": "AR12QA2B3",
-      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube"
+      "app.kubernetes.io/managed-by": "atomist_k8s-sdm_minikube",
+      "atomist.com/workspaceId": "AR12QA2B3"
     },
     "name": "sdm"
   }
