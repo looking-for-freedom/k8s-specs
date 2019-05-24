@@ -1,0 +1,30 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "labels": {
+      "app.kubernetes.io/managed-by": "atomist_lff-sdm_minikube",
+      "app.kubernetes.io/name": "lff-sdm",
+      "app.kubernetes.io/part-of": "lff-sdm",
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "name": "lff-sdm",
+    "namespace": "lff"
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "http",
+        "port": 2866,
+        "protocol": "TCP",
+        "targetPort": "http"
+      }
+    ],
+    "selector": {
+      "app.kubernetes.io/name": "lff-sdm",
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "sessionAffinity": "None",
+    "type": "NodePort"
+  }
+}

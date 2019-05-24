@@ -1,0 +1,11 @@
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "labels": {
+      "app.kubernetes.io/managed-by": "atomist_lff-sdm_minikube",
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "name": "lff"
+  }
+}

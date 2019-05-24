@@ -1,0 +1,109 @@
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRole",
+  "metadata": {
+    "labels": {
+      "app.kubernetes.io/managed-by": "atomist_lff-sdm_minikube",
+      "app.kubernetes.io/name": "lff-sdm",
+      "app.kubernetes.io/part-of": "lff-sdm",
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "name": "lff-sdm"
+  },
+  "rules": [
+    {
+      "apiGroups": [
+        ""
+      ],
+      "resources": [
+        "namespaces",
+        "pods",
+        "secrets",
+        "serviceaccounts",
+        "services"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
+    },
+    {
+      "apiGroups": [
+        "apps",
+        "extensions"
+      ],
+      "resources": [
+        "deployments"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
+    },
+    {
+      "apiGroups": [
+        "extensions",
+        "networking.k8s.io"
+      ],
+      "resources": [
+        "ingresses"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
+    },
+    {
+      "apiGroups": [
+        "rbac.authorization.k8s.io"
+      ],
+      "resources": [
+        "clusterroles",
+        "clusterrolebindings",
+        "roles",
+        "rolebindings"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
+    },
+    {
+      "apiGroups": [
+        "batch"
+      ],
+      "resources": [
+        "jobs"
+      ],
+      "verbs": [
+        "get",
+        "list",
+        "watch",
+        "create",
+        "update",
+        "patch",
+        "delete"
+      ]
+    }
+  ]
+}
