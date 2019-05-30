@@ -1,0 +1,25 @@
+{
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "kind": "ClusterRoleBinding",
+  "metadata": {
+    "labels": {
+      "app.kubernetes.io/managed-by": "atomist_lff-sdm_minikube",
+      "app.kubernetes.io/name": "lff-sdm",
+      "app.kubernetes.io/part-of": "lff-sdm",
+      "atomist.com/workspaceId": "AR12QA2B3"
+    },
+    "name": "lff-sdm"
+  },
+  "roleRef": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "ClusterRole",
+    "name": "lff-sdm"
+  },
+  "subjects": [
+    {
+      "kind": "ServiceAccount",
+      "name": "lff-sdm",
+      "namespace": "lff"
+    }
+  ]
+}
