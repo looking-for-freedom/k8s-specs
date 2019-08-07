@@ -5,6 +5,7 @@ metadata:
   namespace: n
   labels:
     app: n2
+    owner: me
 spec:
   replicas: 2
   selector:
